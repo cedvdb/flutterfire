@@ -3,43 +3,17 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-export 'src/action_code_info.dart';
-export 'src/action_code_settings.dart';
-export 'src/additional_user_info.dart';
-export 'src/auth_credential.dart';
-export 'src/auth_provider.dart';
-export 'src/firebase_auth_exception.dart';
-export 'src/firebase_auth_multi_factor_exception.dart';
-export 'src/id_token_result.dart';
-export 'src/pigeon/messages.pigeon.dart'
-    show
-        InternalUserDetails,
-        InternalUserInfo,
-        ActionCodeInfoOperation,
-        InternalIdTokenResult;
-export 'src/platform_interface/platform_interface_confirmation_result.dart';
-export 'src/platform_interface/platform_interface_firebase_auth.dart';
-export 'src/platform_interface/platform_interface_multi_factor.dart';
-export 'src/platform_interface/platform_interface_recaptcha_verifier_factory.dart';
-export 'src/platform_interface/platform_interface_user.dart';
-export 'src/platform_interface/platform_interface_user_credential.dart';
-export 'src/providers/apple_auth.dart';
-export 'src/providers/email_auth.dart';
-export 'src/providers/facebook_auth.dart';
-export 'src/providers/game_center_auth.dart';
-export 'src/providers/github_auth.dart';
-export 'src/providers/google_auth.dart';
-export 'src/providers/microsoft_auth.dart';
-export 'src/providers/oauth.dart';
-export 'src/providers/phone_auth.dart';
-export 'src/providers/saml_auth.dart';
-export 'src/providers/twitter_auth.dart';
-export 'src/providers/yahoo_auth.dart';
-export 'src/providers/play_games_auth.dart';
-export 'src/types.dart';
-export 'src/user_info.dart';
-export 'src/user_metadata.dart';
-export 'src/password_policy/password_policy_api.dart';
-export 'src/password_policy/password_policy_impl.dart';
-export 'src/password_policy/password_policy.dart';
-export 'src/password_policy/password_validation_status.dart';
+/// The platform interface for Firebase Auth.
+///
+/// The types of this platform interface do not depend on Flutter anymore and
+/// live in `firebase_auth_common`, so that platform implementations can be
+/// used outside of Flutter. They are re-exported here to keep this package the
+/// single entry point for Flutter users. Only the `MethodChannel` based
+/// implementation and the generated messages remain in this package, and
+/// [registerMethodChannelInstances] exposes registering them.
+library;
+
+export 'package:firebase_auth_common/firebase_auth_common.dart';
+
+export 'src/method_channel/default_instances.dart'
+    show registerMethodChannelInstances;

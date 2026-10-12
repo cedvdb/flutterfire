@@ -13,6 +13,9 @@ void main() {
 
     setUpAll(() async {
       recaptchaVerifierFactoryPlatform = TestRecaptchaVerifierFactoryPlatform();
+      // `FirebaseAuthPlatform.instance` does not default to the `MethodChannel`
+      // implementation anymore, and is read by `delegateFor()` below.
+      registerMethodChannelInstances();
     });
 
     test('Constructor', () {

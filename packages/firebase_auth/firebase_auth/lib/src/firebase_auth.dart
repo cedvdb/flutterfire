@@ -5,6 +5,21 @@
 
 part of '../firebase_auth.dart';
 
+/// Registers the `MethodChannel` implementations of the Firebase Auth platform
+/// interfaces, unless an implementation already registered itself.
+///
+/// `firebase_auth_platform_interface` cannot register them itself, because the
+/// platform interfaces have to stay usable without a Flutter dependency.
+/// Implementations registering themselves, such as `firebase_auth_web` from
+/// its `registerWith` method, keep precedence.
+void _registerMethodChannelInstancesIfNeeded() {
+  if (!FirebaseAuthPlatform.isRegistered ||
+      !PhoneMultiFactorGeneratorPlatform.isRegistered ||
+      !TotpMultiFactorGeneratorPlatform.isRegistered) {
+    registerMethodChannelInstances();
+  }
+}
+
 /// The entry point of the Firebase Authentication SDK.
 class FirebaseAuth extends FirebasePlugin implements FirebaseService {
   // Cached instances of [FirebaseAuth].
@@ -20,6 +35,8 @@ class FirebaseAuth extends FirebasePlugin implements FirebaseService {
   /// If called and no [_delegatePackingProperty] exists, it will first be
   /// created and assigned before returning the delegate.
   FirebaseAuthPlatform get _delegate {
+    _registerMethodChannelInstancesIfNeeded();
+
     _delegatePackingProperty ??= FirebaseAuthPlatform.instanceFor(
       app: app,
       pluginConstants: pluginConstants,

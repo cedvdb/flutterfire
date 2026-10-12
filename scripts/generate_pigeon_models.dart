@@ -67,6 +67,13 @@ const List<_Target> _targets = <_Target>[
         '/lib/src/pigeon/messages.dart',
     packageImport: 'package:firebase_core_common/src/pigeon/messages.dart',
   ),
+  _Target(
+    generated: 'packages/firebase_auth/firebase_auth_platform_interface'
+        '/lib/src/pigeon/messages.pigeon.dart',
+    models: 'packages/firebase_auth/firebase_auth_common'
+        '/lib/src/pigeon/messages.dart',
+    packageImport: 'package:firebase_auth_common/src/pigeon/messages.dart',
+  ),
 ];
 
 /// The first declaration of the Flutter dependent part of Pigeon's output.

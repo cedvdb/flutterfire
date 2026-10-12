@@ -1,0 +1,24 @@
+name: firebase_auth_common
+description: Pure Dart shared types and platform interfaces used by firebase_auth
+  and its platform implementations.
+homepage: https://github.com/firebase/flutterfire/tree/main/packages/firebase_auth/firebase_auth_common
+repository: https://github.com/firebase/flutterfire/tree/main/packages/firebase_auth/firebase_auth_common
+version: 0.1.0
+resolution: workspace
+topics:
+  - firebase
+  - auth
+
+environment:
+  sdk: '^3.6.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  firebase_core_common: ^0.1.0
+  http: ^1.1.0
+  meta: ^1.8.0
+  plugin_platform_interface: ^2.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

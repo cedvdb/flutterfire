@@ -22,6 +22,7 @@ void setupFirebaseAuthMocks([Callback? customHandlers]) {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setupFirebaseCoreMocks();
+  registerMethodChannelInstances();
 }
 
 void handleEventChannel(

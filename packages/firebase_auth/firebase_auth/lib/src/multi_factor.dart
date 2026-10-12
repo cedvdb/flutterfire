@@ -60,6 +60,8 @@ class PhoneMultiFactorGenerator {
   static MultiFactorAssertion getAssertion(
     PhoneAuthCredential credential,
   ) {
+    _registerMethodChannelInstancesIfNeeded();
+
     final assertion =
         PhoneMultiFactorGeneratorPlatform.instance.getAssertion(credential);
     return MultiFactorAssertion._(assertion);
@@ -73,6 +75,8 @@ class TotpMultiFactorGenerator {
   static Future<TotpSecret> generateSecret(
     MultiFactorSession session,
   ) async {
+    _registerMethodChannelInstancesIfNeeded();
+
     final secret =
         await TotpMultiFactorGeneratorPlatform.instance.generateSecret(session);
     return TotpSecret._(
@@ -91,6 +95,8 @@ class TotpMultiFactorGenerator {
     TotpSecret secret,
     String oneTimePassword,
   ) async {
+    _registerMethodChannelInstancesIfNeeded();
+
     final assertion = await TotpMultiFactorGeneratorPlatform.instance
         .getAssertionForEnrollment(
       secret._instance,
@@ -106,6 +112,8 @@ class TotpMultiFactorGenerator {
     String enrollmentId,
     String oneTimePassword,
   ) async {
+    _registerMethodChannelInstancesIfNeeded();
+
     final assertion =
         await TotpMultiFactorGeneratorPlatform.instance.getAssertionForSignIn(
       enrollmentId,
