@@ -34,6 +34,7 @@ workspace:
   - packages/firebase_auth/firebase_auth_web
   - packages/firebase_core/firebase_core
   - packages/firebase_core/firebase_core/example
+  - packages/firebase_core/firebase_core_common
   - packages/firebase_core/firebase_core_platform_interface
   - packages/firebase_core/firebase_core_web
   - packages/firebase_crashlytics/firebase_crashlytics
@@ -468,10 +469,20 @@ melos:
         melos run generate:pigeon:macos --no-select && \
         melos run generate:pigeon:android --no-select && \
         melos run generate:pigeon:dart-test --no-select && \
+        melos run generate:pigeon:dart-models --no-select && \
         melos run format-ci --no-select
       packageFilters:
         fileExists: 'pigeons/messages.dart'
       description: Generate the pigeon messages for all the supported packages.
+
+    generate:pigeon:dart-models:
+      run: dart run scripts/generate_pigeon_models.dart
+      description: |
+        The Pigeon data classes are pure Dart while the rest of the generated
+        file depends on Flutter. Extract them into the `*_common` packages,
+        which have no Flutter dependency, so that platform implementations can
+        be used outside of Flutter. The generated files import and re-export
+        the extracted classes to keep a single class identity.
 
     generate:pigeon:dart-test:
       run: |
