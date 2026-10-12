@@ -6,7 +6,7 @@
 import 'dart:async';
 import 'dart:js_interop';
 
-import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_auth_common/firebase_auth_common.dart';
 import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:web/web.dart' as web;
 

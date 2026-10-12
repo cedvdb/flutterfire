@@ -8,7 +8,7 @@ library;
 import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
-import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_auth_common/firebase_auth_common.dart';
 import 'package:firebase_auth_web/src/utils/web_utils.dart';
 import 'package:flutter_test/flutter_test.dart';
 

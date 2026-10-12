@@ -515,6 +515,17 @@ melos:
     postclean: >
       melos exec -c 6 -- "flutter clean"
 
+    check:pure-dart:
+      run: |
+        melos exec --scope=firebase_auth_web -- \
+          "dart compile js tool/pure_dart_check.dart --output=/tmp/flutterfire_pure_dart_check.js"
+      description: |-
+        Compile a pure Dart entry point which uses the web implementations of
+        firebase_auth and firebase_core. It fails as soon as a library which
+        depends on Flutter becomes reachable, which is what allows the web
+        implementations to be used without Flutter, for example in pure Dart web
+        applications.
+
     add-license-header:
       # If you add here another --ignore flag, add it also to
       # "check-license-header".

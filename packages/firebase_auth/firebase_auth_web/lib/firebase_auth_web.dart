@@ -6,15 +6,13 @@
 import 'dart:async';
 import 'dart:js_interop';
 
-import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_auth_common/firebase_auth_common.dart';
 import 'package:firebase_auth_web/src/firebase_auth_web_multi_factor.dart';
 import 'package:firebase_auth_web/src/utils/web_utils.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core_common/firebase_core_common.dart';
 import 'package:firebase_core_web/firebase_core_web.dart';
 import 'package:firebase_core_web/firebase_core_web_interop.dart'
     as core_interop;
-import 'package:flutter/foundation.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:web/web.dart' as web;
 
 import 'src/firebase_auth_version.dart';
@@ -26,6 +24,7 @@ import 'src/firebase_auth_web_user.dart';
 import 'src/firebase_auth_web_user_credential.dart';
 import 'src/interop/auth.dart' as auth_interop;
 import 'src/interop/multi_factor.dart' as multi_factor;
+import 'src/utils/debug.dart';
 
 enum StateListener { authStateChange, userStateChange, idTokenChange }
 
@@ -50,7 +49,11 @@ class FirebaseAuthWeb extends FirebaseAuthPlatform {
   }
 
   /// Called by PluginRegistry to register this plugin for Flutter Web
-  static void registerWith(Registrar registrar) {
+  ///
+  /// [registrar] is typed as `dynamic` so that this package can be used
+  /// without a Flutter dependency, in which case it is called directly, for
+  /// example `FirebaseAuthWeb.registerWith(null)`.
+  static void registerWith(dynamic registrar) {
     FirebaseCoreWeb.registerLibraryVersion(_libraryName, packageVersion);
 
     FirebaseCoreWeb.registerService(

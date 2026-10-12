@@ -9,11 +9,11 @@
 import 'dart:async';
 import 'dart:js_interop';
 
-import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
+import 'package:firebase_auth_common/firebase_auth_common.dart';
 import 'package:firebase_core_web/firebase_core_web_interop.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http_parser/http_parser.dart';
 
+import '../utils/debug.dart';
 import 'auth_interop.dart' as auth_interop;
 
 export 'auth_interop.dart';
